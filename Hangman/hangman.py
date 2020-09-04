@@ -138,9 +138,6 @@ correct_letters = ''
 secret_word = get_secret_word(words)
 game_is_done = False
 
-#debug
-print(secret_word)
-
 while True:
     get_game_status(HANGMAN_PICS, missed_letters, correct_letters, secret_word)
 
