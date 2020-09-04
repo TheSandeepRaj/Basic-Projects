@@ -42,7 +42,7 @@ hangman_pic = ['''
    ______________
     |         |
     |         0
-    |        /|\
+    |        /|\\
     |      
     |
 ==================''', '''
@@ -50,15 +50,16 @@ hangman_pic = ['''
    ______________
     |         |
     |         0
-    |        /|\
+    |        /|\\
     |        / 
+    |
 ==================''', '''
 
    ______________
     |         |
     |         0
-    |        /|\
-    |        / \
+    |        /|\\
+    |        / \\
     |
 ==================''', '''
 
@@ -84,11 +85,34 @@ words_animal = ('Ant Baboon Badger Bat Bear Beaver Camel Cat Clam Cobra Cougar C
 # words_expert =
 
 
-def get_words(word_list):
-    # TODO: function to return word from selected word category
+def secrect_word(word_list):
+    # TODO: function to return secrect word from selected word category
     word_index = random.randint(0, len(word_list) - 1)
     return word_list[word_index]
 
-def game_status(missedLetters, correctLetters, secretWord):
+def game_status(missed_letters, correct_etters, secret_word):
     # TODO: function to return current game status or main UI
-    print(hangman_pic)                                  ######***********
+    print(hangman_pic[len(missed_letters)] +'\n' )
+    
+    # TODO: guess left 
+    guess_left = 6 - len(missed_letter)
+    print('Guess Left: ' + str(guess_left), end='\t')
+
+    print('Missed letters:', end=' ')
+    for letter in missed_letters:
+        print(letter)
+
+    blanks = '_' * len(secret_word)
+
+    for i in range(len(secret_word)):       # replace blanks with correctly guessed letters
+        if secret_word[i] in correct_letters:
+            blanks = blanks[:i] + secret_word[i] + blanks[i+1:]
+
+    for letter in blanks:                   # show the secret word with spaces in between each letter
+        print(letter, end=' ')
+    print()
+
+
+
+
+print(hangman_pic[5] +'\n')
