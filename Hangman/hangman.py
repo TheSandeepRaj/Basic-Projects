@@ -84,6 +84,8 @@ words_animal = ('Ant Baboon Badger Bat Bear Beaver Camel Cat Clam Cobra Cougar C
 
 # words_expert =
 
+words = words_animal
+
 
 def get_secret_word(word_list):
     # TODO: function to return secrect word from selected word category
@@ -95,7 +97,7 @@ def get_game_status(HANGMAN_PICS, missed_letters, correct_letters, secret_word):
     print(HANGMAN_PICS[len(missed_letters)] +'\n' )
     
     # TODO: guess left 
-    guess_left = 6 - len(missed_letters)
+    guess_left = 7 - len(missed_letters)
     print('Guess Left: ' + str(guess_left), end='\t')
 
     print('Missed letters:', end=' ')
@@ -106,7 +108,7 @@ def get_game_status(HANGMAN_PICS, missed_letters, correct_letters, secret_word):
     blanks = '_' * len(secret_word)         # for 5 word letter blanks = '_____'
 
     for i in range(len(secret_word)):        #   replace blanks with correctly guessed letters
-        if secret_word[i]. in correct_letters:
+        if secret_word[i].lower() in correct_letters:
             blanks = blanks[:i] + secret_word[i] + blanks[i+1:]
 
     for letter in blanks:                   # show the secret word with spaces in between each letter
@@ -133,8 +135,11 @@ def get_guess(already_guessed):
 print('WELCOME to H A N G M A N')
 missed_letters = ''
 correct_letters = ''
-secret_word = get_secret_word(words_animal)
+secret_word = get_secret_word(words)
 game_is_done = False
+
+#debug
+print(secret_word)
 
 while True:
     get_game_status(HANGMAN_PICS, missed_letters, correct_letters, secret_word)
@@ -142,8 +147,8 @@ while True:
     # Let the player type in a letter.
     guess = get_guess(missed_letters + correct_letters)
 
-    if guess in secret_word:
-        correct_letters = correct_letters + guess
+    if guess in secret_word.lower():
+        correct_letters += guess
 
         # Check if the player has won
         found_all_letters = True
@@ -160,7 +165,8 @@ while True:
         # Check if player has guessed too many times and lost
         if len(missed_letters) == len(HANGMAN_PICS) - 1:
             get_game_status(HANGMAN_PICS, missed_letters, correct_letters, secret_word)
-            print('You have run out of guesses!\nAfter ' + str(len(missed_letters)) + ' missed guesses and ' + str(len(correct_letters)) + ' correct guesses, the word was "' + secret_word + '"')
+            print('After ' + str(len(missed_letters)) + ' missed guesses and '
+                     + str(len(correct_letters)) + ' correct guesses, the word was "' + secret_word.upper() + '"')
             game_is_done = True
 
     # Ask the player if they want to play again (but only if the game is done).
@@ -170,6 +176,5 @@ while True:
             missed_letters = ''
             correct_letters = ''
             game_is_done = False
-            secret_word = getRandomWord(words)
+            secret_word = get_secret_word(words)
         break
-
