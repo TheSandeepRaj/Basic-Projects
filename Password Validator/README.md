@@ -8,8 +8,7 @@
 -   Must contain at least one number;
 -   Must contain at least one special character (such as &, +, @, $, #, %, etc.); 
 -	Should not contain spaces.  
-  
-  
+    
  ### Example: 
 Input: "Sandeep"  
 Output: **False**  
