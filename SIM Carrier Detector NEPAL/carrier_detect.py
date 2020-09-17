@@ -6,8 +6,11 @@ import re
 # +977-980******* Ncell 
 # +977-981******* Ncell
 # +977-982******* Ncell
-# +977-961******* SmartCell (maybe)
-# +977-988******* SmartCell (maybe)
+# +977-961******* SmartCell 
+# +977-962******* SmartCell 
+# +977-988******* SmartCell
+
+
 user_details = input("Hey! What's your phone number?\n")
 
 def carrier_detect(carrier):
@@ -15,8 +18,11 @@ def carrier_detect(carrier):
     if (carrier == 980) or (carrier == 981) or (carrier == 982) :
         return 'Ncell'
 
-    elif (carrier == 984) or (carrier == 985) or (carrier == 986):
-        return 'Nepal Telecom'
+    elif (carrier == 984) or (carrier == 986):
+        return 'Nepal Telecom (Pre-Paid)'
+
+    elif carrier == 985):
+        return 'Nepal Telecom (Post-Paid)'
 
     elif (carrier == 961) or (carrier == 988) :
        return'SmartCell'
