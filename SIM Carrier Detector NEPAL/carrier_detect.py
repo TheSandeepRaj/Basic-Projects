@@ -9,7 +9,7 @@ import re
 # +977-961******* SmartCell 
 # +977-962******* SmartCell 
 # +977-988******* SmartCell
-
+# ToDo: 972 CDMA UTL    963 Hello mobile / Nepal Satellite Telecom      974/975	 CDMA	Sky SIM / Ntc CDMA
 
 user_details = input("Hey! Enter the mobile number?\n")
 
@@ -30,10 +30,11 @@ def carrier_detect(carrier):
     else:
         print("Sorry we couldn't find your carrier info.")
         exit()
-
-phone_num_regex = re.compile(r'(\+)?(\d\d\d)?(-)?(\d\d\d)\d\d\d\d\d\d\d')
+        
+phone_num_regex = re.compile(r'(\+)?(\d\d\d)?(-)?(\d\d\d)(\d\d\d\d\d\d\d)')
 num = phone_num_regex.search(user_details)
 
 carrier_part = num.group(4)
+number_only = num.group(4) + num.group(5)
 
-print('Carrier of number '+ num.group() + ' is "' + carrier_detect(carrier_part) + '".')
+print('Carrier of number '+ number_only + ' is "' + carrier_detect(carrier_part) + '".')
