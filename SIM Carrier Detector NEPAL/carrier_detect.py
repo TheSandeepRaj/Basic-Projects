@@ -24,7 +24,7 @@ def carrier_detect(carrier):
     elif carrier == 985):
         return 'Nepal Telecom (Post-Paid)'
 
-    elif (carrier == 961) or (carrier == 988) :
+    elif (carrier == 961) or (carrier == 962) or (carrier == 988) :
        return'SmartCell'
 
 phone_num_regex = re.compile(r'(\+)?(\d\d\d)?(-)?(\d\d\d)\d\d\d\d\d\d\d')
