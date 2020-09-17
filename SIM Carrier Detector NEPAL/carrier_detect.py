@@ -11,7 +11,7 @@ import re
 # +977-988******* SmartCell
 
 
-user_details = input("Hey! What's your phone number?\n")
+user_details = input("Hey! Enter the mobile number?\n")
 
 def carrier_detect(carrier):
     carrier = int(carrier)
@@ -21,16 +21,19 @@ def carrier_detect(carrier):
     elif (carrier == 984) or (carrier == 986):
         return 'Nepal Telecom (Pre-Paid)'
 
-    elif carrier == 985):
+    elif (carrier == 985):
         return 'Nepal Telecom (Post-Paid)'
 
     elif (carrier == 961) or (carrier == 962) or (carrier == 988) :
        return'SmartCell'
+    
+    else:
+        print("Sorry we couldn't find your carrier info.")
+        exit()
 
 phone_num_regex = re.compile(r'(\+)?(\d\d\d)?(-)?(\d\d\d)\d\d\d\d\d\d\d')
 num = phone_num_regex.search(user_details)
 
 carrier_part = num.group(4)
 
-print('Your mobile number is', num.group())
-print('Your carrier is', carrier_detect(carrier_part))
+print('Carrier of number '+ num.group() + ' is "' + carrier_detect(carrier_part) + '".')
