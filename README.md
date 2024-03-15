@@ -1,5 +1,5 @@
 ## Some Python project ideas for learning:
--------------------
+--------------------
 
 1. **To-Do List App:**
    Create a basic to-do list application where users can add, edit, and remove tasks. You can also add features like marking tasks as completed.
